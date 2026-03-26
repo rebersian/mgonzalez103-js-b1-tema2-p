@@ -23,10 +23,57 @@
 
 const myJSON= '[{"brand":"Ford","model":"Mustang Boss 429","displacement":7000,"horsePower":375,"year":1969},{"brand":"BMW","model":"520d","displacement":1980,"horsePower":136,"year":2002},{"brand":"Mercedes-Benz","model":"280 SLC","displacement":2746,"horsePower":136,"year":1979}]';
 
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
+// MGG - myCars, lessThan25, newCarsJSON
+class Car {
+  constructor(brand, model, displacement, horsePower, year) {
+    this.brand = brand;
+    this.model = model;
+    this.displacement = displacement;
+    this.horsePower = horsePower;
+    this.year = year;
+  }
 
+  set carAntiguaty(antiguaty) {
+    this.year = 2023 - antiguaty;
+  }
 
+  get getCarDescription() {
+    return `${this.brand} ${this.model} ${this.displacement}cc`;
+  }
 
+  get getCarAntiguaty(){
+    return this.carAntiguaty;
+  }
+
+  cv2kw() {
+	  return this.horsePower*0.736;
+  }
+
+  static compareAntiguaty(car1, car2) {
+	  return car1.year < car2.year ? car1 : car2;
+  }
+
+  static maxDisplacement(cars) {
+    let max = cars[0];
+    for (let i=1; i<cars.length; i++) {
+      if (cars[i].displacement>max.displacement) max = cars[i];
+    }
+    return max;
+  }
+}
+
+function menosDe25(car) {
+    if (2026-car.year<25) return car;
+}
+
+const myCars = JSON.parse(myJSON);
+const lessThan25 = myCars.filter(menosDe25);
+const newCarsJSON = JSON.stringify(lessThan25);
+
+// MGG - para pruebas unitarias
+// console.log(myCars);
+// console.log(lessThan25);
+// console.log(newCarsJSON);
 
 /**
  * TEST

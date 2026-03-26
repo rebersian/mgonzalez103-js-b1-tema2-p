@@ -48,9 +48,32 @@ class Planet {
 	}
 }
 
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
+// MGG - a partir de los datos de los planetas de tema 1, crear los 8 objetos planetas, 
+// obtener el nombre de su estrellam, una array con los que tienen anillos y la distancia entre dos de ellos
+const myPlanet1 = new Planet("Mercury", 58344000, false, 4878);
+const myPlanet2 = new Planet("Venus", 107712000, false, 12100);
+const myPlanet3 = new Planet("Earth", 149600000, false, 12756);
+const myPlanet4 = new Planet("Mars", 227392000, false, 6787);
+const myPlanet5 = new Planet("Jupiter", 777920000, true, 142984);
+const myPlanet6 = new Planet("Saturn", 1427184000, true, 120536);
+const myPlanet7 = new Planet("Uranus", 2600000000, true, 51108);
+const myPlanet8 = new Planet("Neptune", 4300000000, true, 49538);
 
+const starName = myPlanet1.nameOftheStar();
+const PWR = Planet.planetsWithRings([myPlanet1, myPlanet2, myPlanet3, myPlanet4, myPlanet5, myPlanet6, myPlanet7, myPlanet8]);
+const venusToSarturn = Planet.distanceBetweenPlanets(myPlanet2, myPlanet6);
 
+// MGG - para pruebas unitarias.
+// console.log("myPlanet1 = "+JSON.stringify(myPlanet1));
+// console.log("myPlanet2 = "+JSON.stringify(myPlanet2));
+// console.log("myPlanet3 = "+JSON.stringify(myPlanet3));
+// console.log("myPlanet4 = "+JSON.stringify(myPlanet4));
+// console.log("myPlanet5 = "+JSON.stringify(myPlanet5));
+// console.log("myPlanet6 = "+JSON.stringify(myPlanet6));
+// console.log("myPlanet7 = "+JSON.stringify(myPlanet7));
+// console.log("myPlanet8 = "+JSON.stringify(myPlanet8));
+// console.log("PWR = "+JSON.stringify(PWR));
+// console.log("venusToSarturn = "+venusToSarturn);
 
 /**
  * TEST

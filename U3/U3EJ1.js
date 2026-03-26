@@ -31,12 +31,34 @@ class Car {
 }
 */
 
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
+// MGG - dado Car añadir carAntiguaty y getCarDescription
+class Car {
+  constructor(brand, model, displacement, horsePower, year) {
+    this.brand = brand;
+    this.model = model;
+    this.displacement = displacement;
+    this.horsePower = horsePower;
+    this.year = year;
+  }
 
+  set carAntiguaty(antiguaty) {
+    this.year = 2023 - antiguaty;
+  }
 
+  get getCarDescription() {
+    return `${this.brand} ${this.model} ${this.displacement}cc`;
+  }
 
+  get getCarAntiguaty(){
+    return this.carAntiguaty;
+  }
+}
 
-
+// MGG - para pruebas unitarias
+// const myCar1 = new Car("Ford", "Mustang Boss 429", 7000, 375, 1969);
+// myCar1.carAntiguaty = 34;
+// console.log(myCar1);
+// console.log(myCar1.getCarDescription);
 
 /**
  * TEST

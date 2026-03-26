@@ -16,11 +16,16 @@
   Defineix aquesta classe que implementi un constructor capaç d'instanciar d'aquest tipus d'objectes.
 */
 
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
+// MGG - dadas dos propiedades definir el objeto
+class Triangle {
+  constructor(base, height){
+    this.base = base;
+    this.height = height;
+  }
+}
 
-
-
-
+// MGG - dados los datos de tres coches crear 3 objetos Car.
+// console.log(new Triangle(3, 4));
 
 /**
  * TEST

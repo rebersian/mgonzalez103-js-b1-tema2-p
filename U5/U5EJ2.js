@@ -31,12 +31,58 @@
 	En base a la funcionalitat sol·licitada haureu de decidir quins mètodes definiu com a Mètodes d'Instància i quins definiu com a Mètodes de Classe.
 	Finalment, crea almenys 3 objectes de la classe Car i fes 3 crides a aquests nous mètodes.
 */
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
 
+// MGG - dado Car, implementar compareAntiguaty, maxDisplacement y cv2kw
+class Car {
+  constructor(brand, model, displacement, horsePower, year) {
+    this.brand = brand;
+    this.model = model;
+    this.displacement = displacement;
+    this.horsePower = horsePower;
+    this.year = year;
+  }
 
+  set carAntiguaty(antiguaty) {
+    this.year = 2023 - antiguaty;
+  }
 
+  get getCarDescription() {
+    return `${this.brand} ${this.model} ${this.displacement}cc`;
+  }
 
+  get getCarAntiguaty(){
+    return this.carAntiguaty;
+  }
 
+  cv2kw() {
+	  return this.horsePower*0.736;
+  }
+
+  static compareAntiguaty(car1, car2) {
+	  return car1.year < car2.year ? car1 : car2;
+  }
+
+  static maxDisplacement(cars) {
+    let max = cars[0];
+    for (let i=1; i<cars.length; i++) {
+      if (cars[i].displacement>max.displacement) max = cars[i];
+    }
+    return max;
+  }
+}
+ 
+const myCar1 = new Car("Ford", "Mustang Boss 429", 7000, 375, 1969);
+const myCar2 = new Car("BMW", "520d", 1980, 136, 2002);
+const myCar3 = new Car("Mercedes-Benz", "280 SLC", 9746, 136, 1979);
+
+let compareAntiguaty = Car.compareAntiguaty(myCar1, myCar2);
+let maxDisplacement = Car.maxDisplacement([myCar1, myCar2, myCar3]);
+let cv2kw = myCar2.cv2kw();
+
+// MGG - pruebas unitarias
+// console.log("compareAntiguaty = "+JSON.stringify(compareAntiguaty));
+// console.log("maxDisplacement = "+JSON.stringify(maxDisplacement));
+// console.log("cv2kw = "+cv2kw);
 
 /**
  * TEST

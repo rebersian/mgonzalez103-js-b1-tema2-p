@@ -37,12 +37,64 @@
 	En base a la funcionalitat sol·licitada haureu de decidir quins mètodes definiu com a Mètodes d'Instància i quins definiu com a Mètodes de Classe.
 	Finalment, crea almenys 3 objectes de la classe Triangle i fes 3 trucades a aquests nous mètodes.
 */
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
 
+// MGG - dado triangle, implementar rightTriangleUnion, areaPoligon, isEquilateral
+class Triangle {
+  constructor(base, height, rightTriangle){
+    this.base = base;
+    this.height = height;
+    this.rightTriangle = rightTriangle;
+  }
 
+  get areaTriangle(){
+    return (this.base*this.height)/2;
+  }
 
+  get rightHypotenuse(){
+    return this.rightTriangle?Math.sqrt(this.base**2+this.height**2):undefined;
+  }
 
+  get rightPerimeter(){
+      return this.rightTriangle?(Math.sqrt(this.base**2+this.height**2)+this.base+this.height):undefined;
+  }
 
+  static rightTriangleUnion (triangle1, triangle2) {
+	return triangle1.rightTriangle && triangle2.rightTriangle ? triangle1.rightPerimeter+triangle2.rightPerimeter+Math.abs(triangle1.height - triangle2.height):undefined;
+  }
+
+  static areaPoligon (triangles) {
+	let area = 0;
+	for (let i=0; i<triangles.length; i++) {
+		area = area + triangles[i].areaTriangle;
+	}
+	return area;
+  }
+	
+  isEquilateral() {
+	return this.height===(this.base * Math.sqrt(3)) / 2;
+  }
+}
+
+const triangle1 = new Triangle(10, 10*Math.sqrt(3)/2, true);
+const triangle2 = new Triangle(5, 5*Math.sqrt(3)/2, true);
+const triangle3 = new Triangle(5, 6*Math.sqrt(3)/2, false);
+
+let isEquilateral1 = triangle1.isEquilateral(); 
+let isEquilateral2 = triangle2.isEquilateral(); 
+let isEquilateral3 = triangle3.isEquilateral(); 
+
+let union12 = Triangle.rightTriangleUnion(triangle1, triangle2);
+let union13 = Triangle.rightTriangleUnion(triangle1, triangle3);
+
+let unionAll = Triangle.areaPoligon([triangle1, triangle2, triangle3]);
+
+// MGG - para pruebas unitarias
+// console.log("isEquilateral1 = "+isEquilateral1);
+// console.log("isEquilateral2 = "+isEquilateral2);
+// console.log("isEquilateral3 = "+isEquilateral3);
+// console.log("union12 = "+union12);
+// console.log("union13 = "+union13);
+// console.log("unionAll = "+unionAll);
 
 /**
  * TEST

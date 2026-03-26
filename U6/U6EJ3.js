@@ -21,11 +21,55 @@
 
 const myJSON = '[{"base":10,"height":5,"rightTriangle":true},{"base":10,"height":8.660254037844386,"rightTriangle":false},{"base":15,"height":7,"rightTriangle":true}]';
 
-//Escribe aquí tu solución / escriviu aquí la vostra solució:
+// MGG - dada la clase Triangle. definir myTriangles a partir de myJSON, equilateralsTriangles array con los equilaterors, newTrianglesJSON pasar a JSON equilateralsTriangles
+class Triangle {
+  constructor(base, height, rightTriangle){
+    this.base = base;
+    this.height = height;
+    this.rightTriangle = rightTriangle;
+  }
 
+  get areaTriangle(){
+    return (this.base*this.height)/2;
+  }
 
+  get rightHypotenuse(){
+    return this.rightTriangle?Math.sqrt(this.base**2+this.height**2):undefined;
+  }
 
+  get rightPerimeter(){
+      return this.rightTriangle?(Math.sqrt(this.base**2+this.height**2)+this.base+this.height):undefined;
+  }
 
+  static rightTriangleUnion (triangle1, triangle2) {
+	  return triangle1.rightTriangle && triangle2.rightTriangle ? triangle1.rightPerimeter+triangle2.rightPerimeter+Math.abs(triangle1.height - triangle2.height):undefined;
+  }
+
+  static areaPoligon (triangles) {
+    let area = 0;
+    for (let i=0; i<triangles.length; i++) {
+      area = area + triangles[i].areaTriangle;
+    }
+    return area;
+  }
+	
+  isEquilateral() {
+	  return this.height===(this.base * Math.sqrt(3)) / 2;
+  }
+}
+
+function isEquilateral1(triangle) {
+    if (triangle.isEquilateral()) return triangle;
+}
+
+const myTriangles = JSON.parse(myJSON).map(t => new Triangle(t.base, t.height, t.rightTriangle));
+const equilateralsTriangles = myTriangles.filter(isEquilateral1);
+const newTrianglesJSON = JSON.stringify(equilateralsTriangles);
+
+// MGG - para pruebas unitarias
+// console.log(myTriangles);
+// console.log(equilateralsTriangles);
+// console.log(newTrianglesJSON);
 
 /**
  * TEST
